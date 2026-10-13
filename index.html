@@ -21,6 +21,132 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&family=Jua&family=Nanum+Pen+Script&display=swap" rel="stylesheet">
 <script>document.documentElement.classList.add('js');</script>
+<script>
+/* ==========================================================================
+
+        ★ 여기에 노래 링크를 붙여 넣으세요 ★
+
+   사장님, 여기만 고치면 카세트에서 진짜 노래가 나와요!
+
+   1) 아래 목록에서 카세트 번호(예: "A-01")와 오른쪽 // 제목 을 확인해요.
+   2) 따옴표 "" 사이에 유튜브 링크를 그대로 붙여 넣어요.
+        예)  "A-01": "https://www.youtube.com/watch?v=XXXXXXXXXXX",  // 슈가슈가룬
+   3) 저장하고 새로고침하면, 그 카세트에 ▶ 듣기 표시가 생겨요.
+
+   꼭 지켜 주세요
+   - 공식 채널 영상만 넣어 주세요. (기획사·방송사·공식 애니 채널)
+     개인이 올린 영상은 저작권 문제로 갑자기 사라질 수 있어요.
+   - 비워 두면("") '아직 준비 중'으로 보여요. 고장 나지 않아요.
+   - 유튜브 링크는 어떤 모양이든 괜찮아요.
+       youtube.com/watch?v=…  /  youtu.be/…  /  youtube.com/shorts/…
+       youtube.com/embed/…  /  m.youtube.com/…  (공유 버튼 링크 그대로 OK)
+     시작 시간이 붙은 링크(…&t=45s, …?t=90)도 그 시간부터 재생돼요.
+   - 따옴표("")와 줄 끝 쉼표(,)는 지우지 마세요.
+
+   ========================================================================== */
+const SONG_LINKS = {
+    /* ---------- 애니 (애니 탭) · 공식 애니/방송사 채널의 오프닝·엔딩 영상 ---------- */
+    "A-01": "",  // 슈가슈가룬
+    "A-02": "",  // 디지몬 어드벤처
+    "A-03": "",  // 아따맘마
+    "A-04": "",  // 개구리 중사 케로로
+    "A-05": "",  // 학교괴담
+    "A-06": "",  // 미소의 세상
+    "A-07": "",  // 라라의 스타일기
+    "A-08": "",  // 키테레츠 대백과
+    "A-09": "",  // 도라에몽
+    "A-10": "",  // 꼬마 마법사 레미
+    "A-11": "",  // 짱구는 못말려
+    "A-12": "",  // 우주인 타로
+    "A-13": "",  // 티미의 못말리는 수호천사
+    "A-14": "",  // 파워퍼프걸
+    "A-15": "",  // 명탐정 코난
+    "A-16": "",  // 안녕 자두야
+    /* ---------- 아이돌 (아이돌 탭) · 기획사 공식 채널 뮤직비디오 ---------- */
+    "B-01": "",  // 티아라
+    "B-02": "",  // 슈퍼주니어
+    "B-03": "",  // 씨엔블루
+    "B-04": "",  // 틴탑
+    "B-05": "",  // 인피니트
+    "B-06": "",  // 엑소
+    "B-07": "",  // 원더걸스
+    "B-08": "",  // 카라
+    "B-09": "",  // 포미닛
+    "B-10": "",  // 에프엑스
+    "B-11": "",  // 씨스타
+    "B-12": "",  // 에이핑크
+    "B-13": "",  // 소녀시대
+    "B-14": "",  // B1A4
+    "B-15": "",  // 시크릿
+    "B-16": "",  // 나인뮤지스
+    /* ---------- TV 프로그램 (TV 프로그램 탭) · 방송사 공식 채널 클립 ---------- */
+    /* 버라이어티 */
+    "C-01": "",  // 무한도전
+    "C-02": "",  // 1박 2일
+    "C-03": "",  // 패밀리가 떴다
+    "C-04": "",  // 런닝맨
+    "C-05": "",  // 우리 결혼했어요
+    "C-06": "",  // 강심장
+    "C-07": "",  // 세바퀴
+    "C-08": "",  // 해피투게더
+    "C-09": "",  // 황금어장 라디오스타
+    "C-10": "",  // 놀러와
+    "C-11": "",  // 스타킹
+    "C-12": "",  // 청춘불패
+    "C-13": "",  // 개그콘서트
+    "C-14": "",  // 슈퍼스타K
+    "C-15": "",  // 위대한 탄생
+    "C-16": "",  // K팝스타
+    "C-17": "",  // 나는 가수다
+    "C-18": "",  // 불후의 명곡
+    "C-19": "",  // 쇼미더머니
+    "C-20": "",  // 히든싱어
+    "C-21": "",  // 정글의 법칙
+    "C-22": "",  // 진짜 사나이
+    "C-23": "",  // 아빠! 어디가?
+    "C-24": "",  // 슈퍼맨이 돌아왔다
+    "C-25": "",  // 나 혼자 산다
+    "C-26": "",  // 꽃보다 할배
+    "C-27": "",  // 삼시세끼
+    "C-28": "",  // 복면가왕
+    "C-29": "",  // 마이 리틀 텔레비전
+    /* 드라마 */
+    "C-30": "",  // 거침없이 하이킥
+    "C-31": "",  // 지붕뚫고 하이킥
+    "C-32": "",  // 커피프린스 1호점
+    "C-33": "",  // 꽃보다 남자
+    "C-34": "",  // 내조의 여왕
+    "C-35": "",  // 선덕여왕
+    "C-36": "",  // 아이리스
+    "C-37": "",  // 미남이시네요
+    "C-38": "",  // 추노
+    "C-39": "",  // 공부의 신
+    "C-40": "",  // 제빵왕 김탁구
+    "C-41": "",  // 성균관 스캔들
+    "C-42": "",  // 시크릿 가든
+    "C-43": "",  // 드림하이
+    "C-44": "",  // 최고의 사랑
+    "C-45": "",  // 뿌리깊은 나무
+    "C-46": "",  // 해를 품은 달
+    "C-47": "",  // 응답하라 1997
+    "C-48": "",  // 신사의 품격
+    "C-49": "",  // 별에서 온 그대
+    "C-50": "",  // 상속자들
+    "C-51": "",  // 너의 목소리가 들려
+    "C-52": "",  // 응답하라 1994
+    "C-53": "",  // 미생
+    "C-54": "",  // 그녀는 예뻤다
+    "C-55": "",  // 응답하라 1988
+    "C-56": ""   // 태양의 후예
+};
+
+/* 스포티파이 플레이리스트 (‘그 시절 노래 들어보기’ 칸에 나와요)
+   open.spotify.com 의 플레이리스트(또는 앨범) 링크를 따옴표 사이에 붙여 넣으세요.
+   예) "https://open.spotify.com/playlist/37i9dQZF1DXXXXXXXXXXXX"
+   비워 두면 '플레이리스트 준비 중이에요' 카드가 보여요. */
+const SPOTIFY_PLAYLIST = "";
+/* ======================== ★ 여기까지만 고치면 돼요 ★ ======================== */
+</script>
 <style>
 :root{
   --pink:#F4A7C3; --pink-soft:#FBD6E3; --pink-mid:#E58FB0; --pink-dark:#D9839F; --pink-deep:#A3245A;
@@ -818,6 +944,109 @@ html,body{overflow-x:clip;max-width:100%}
   .tp .ttl{font-size:20px}
   .tab{padding:0 10px;font-size:15px}
 }
+
+/* ============ v5: 공식 임베드 재생 (카세트 ▶ 듣기 · 플레이어 모달 · 그 시절 노래 들어보기) ============ */
+.tp-hit{position:absolute;inset:0;z-index:3;width:100%;margin:0;padding:0;border:0;border-radius:10px;background:transparent;cursor:pointer;-webkit-tap-highlight-color:transparent}
+.tp-hit:focus-visible{outline:3px solid var(--blue-deep);outline-offset:3px}
+.tp.has-link{cursor:pointer}
+.tp .play-badge{position:absolute;z-index:4;top:-11px;right:10px;display:inline-flex;align-items:center;gap:4px;padding:3px 10px 2px 8px;border:2px solid var(--ink);border-radius:999px;background:var(--lemon);font-family:var(--display);font-size:13px;line-height:1.3;color:var(--ink);box-shadow:2px 2px 0 var(--ink);transform:rotate(3deg);pointer-events:none}
+.tp .play-badge svg{width:10px;height:10px}
+.tp.has-link:hover .play-badge,.tp.has-link.tap .play-badge{background:var(--pink)}
+
+/* snack toast (곡 준비 중) */
+.snack{position:fixed;left:50%;bottom:calc(max(18px, env(safe-area-inset-bottom) + 10px) + 8px);z-index:72;max-width:calc(100vw - 32px);display:flex;align-items:center;gap:10px;padding:10px 18px 9px 12px;background:var(--paper);border:2.5px solid var(--ink);border-radius:999px;box-shadow:4px 4px 0 var(--ink);font-family:var(--display);font-size:16px;line-height:1.35;color:var(--ink);transform:translate(-50%,16px);opacity:0;pointer-events:none;transition:opacity .2s ease, transform .2s ease}
+.snack.on{opacity:1;transform:translate(-50%,0)}
+.snack .ic{flex:none;display:grid;place-items:center;width:32px;height:32px;border-radius:50%;border:2px solid var(--ink);background:var(--pink-soft);font-size:15px}
+
+/* player modal: 문방구 카세트 라디오-TV */
+.pl[hidden]{display:none}
+.pl{position:fixed;inset:0;z-index:120;display:flex;align-items:center;justify-content:center;padding:max(16px, env(safe-area-inset-top)) max(16px, env(safe-area-inset-right)) max(16px, env(safe-area-inset-bottom)) max(16px, env(safe-area-inset-left))}
+.pl-back{position:absolute;inset:0;background:rgba(43,35,64,.62);background-image:radial-gradient(circle, rgba(255,253,246,.06) 1px, transparent 1.5px);background-size:12px 12px}
+.pl-box{position:relative;width:min(880px,100%);max-height:calc(100dvh - 32px);overflow:auto;margin-top:22px;background:var(--pink);border:3px solid var(--ink);border-radius:24px 24px 18px 18px;padding:16px 18px 14px;box-shadow:8px 8px 0 rgba(43,35,64,.9), inset -10px -8px 0 var(--pink-mid);color:var(--ink);animation:plIn .22s ease}
+@keyframes plIn{from{transform:translateY(16px) scale(.98);opacity:0}to{transform:none;opacity:1}}
+.pl-handle{position:absolute;left:30%;right:30%;top:-22px;height:22px;border:3px solid var(--ink);border-bottom:none;border-radius:14px 14px 0 0}
+.pl-top{display:flex;align-items:center;gap:12px;margin-bottom:12px}
+.pl-grille{flex:none;width:46px;height:46px;border-radius:50%;border:2.5px solid var(--ink);background:radial-gradient(circle, var(--ink) 1.5px, transparent 2px) 0 0/7px 7px, var(--pink-soft)}
+.pl-lcd{flex:1;min-width:0;background:#CFE3C9;border:2.5px solid var(--ink);border-radius:10px;padding:5px 12px 4px}
+.pl-lcd small{display:block;font-size:12px;line-height:1.3;color:#36502F}
+.pl-lcd h2{font-size:clamp(18px,2.6vw,24px);line-height:1.3;color:#203A1C;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.pl-close{flex:none;display:inline-flex;align-items:center;justify-content:center;gap:6px;min-width:48px;min-height:48px;padding:0 14px;border:2.5px solid var(--ink);border-radius:12px;background:var(--paper);font-family:var(--display);font-size:16px;color:var(--ink);cursor:pointer;box-shadow:0 3px 0 var(--ink)}
+.pl-close:hover{background:var(--lemon)}
+.pl-close:active{transform:translateY(2px);box-shadow:0 1px 0 var(--ink)}
+.pl-close svg{width:14px;height:14px}
+.pl-screen{position:relative;background:var(--ink);border:3px solid var(--ink);border-radius:16px;padding:10px;box-shadow:inset 0 0 0 3px var(--ink-3)}
+.pl-ratio{position:relative;width:100%;aspect-ratio:16/9;border-radius:10px;overflow:hidden;background:#1B1529}
+.pl-ratio iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.pl-bot{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-top:12px}
+.pl-note{display:inline-flex;align-items:center;gap:8px;font-size:14px;line-height:1.4;color:var(--ink)}
+.pl-note i{flex:none;width:10px;height:10px;border-radius:50%;background:#E0405A;border:2px solid var(--ink);box-shadow:0 0 0 3px rgba(255,253,246,.5)}
+.pl-knobs{display:flex;gap:8px}
+.pl-knobs span{width:30px;height:30px;border-radius:50%;border:2.5px solid var(--ink);background:conic-gradient(from 20deg, var(--paper) 0 30deg, #E7DCC8 30deg 360deg);box-shadow:0 2px 0 var(--ink)}
+html.pl-lock,html.pl-lock body{overflow:hidden}
+
+/* section: 그 시절 노래 들어보기 */
+.listen{padding:92px 0 96px}
+.listen-grid{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:48px;align-items:center}
+.listen-grid>*{min-width:0}
+.listen .sec-lead{margin-bottom:22px}
+.lhints{list-style:none;margin:0;padding:0;display:grid;gap:12px}
+.lhint{display:flex;align-items:center;gap:12px;background:var(--paper);border:2.5px solid var(--ink);border-radius:14px;padding:12px 16px;box-shadow:4px 4px 0 rgba(43,35,64,.22);font-size:16px;line-height:1.5}
+.lhint .mini{flex:none;display:inline-flex;align-items:center;gap:4px;padding:3px 10px 2px 8px;border:2px solid var(--ink);border-radius:999px;background:var(--lemon);font-family:var(--display);font-size:13px;line-height:1.3;box-shadow:2px 2px 0 var(--ink);transform:rotate(3deg)}
+.lhint .mini svg{width:10px;height:10px}
+.lhint .dot{flex:none;display:grid;place-items:center;width:36px;height:36px;border-radius:50%;border:2.5px solid var(--ink);background:var(--blue-soft);font-family:var(--display);font-size:16px}
+.lhint.memo-hand{background:var(--lemon);transform:rotate(-1deg)}
+.lhint.memo-hand .hand{font-size:24px;color:var(--pink-deep)}
+.fm{position:relative;margin-top:26px;background:var(--blue);border:3px solid var(--ink);border-radius:26px 26px 20px 20px;padding:16px 18px 16px;box-shadow:8px 9px 0 rgba(43,35,64,.85), inset -10px -8px 0 var(--blue-mid)}
+.fm-handle{position:absolute;left:28%;right:28%;top:-24px;height:24px;border:3px solid var(--ink);border-bottom:none;border-radius:14px 14px 0 0}
+.fm-ant{position:absolute;right:30px;top:-46px;width:3px;height:44px;background:var(--ink);transform:rotate(20deg);transform-origin:bottom}
+.fm-ant::after{content:"";position:absolute;left:-4px;top:-6px;width:11px;height:11px;border-radius:50%;background:var(--pink);border:2.5px solid var(--ink)}
+.fm-top{display:flex;align-items:center;gap:12px;margin-bottom:12px}
+.fm-sp{flex:none;width:52px;height:52px;border-radius:50%;border:2.5px solid var(--ink);background:radial-gradient(circle, var(--ink) 1.6px, transparent 2px) 0 0/7px 7px, var(--blue-soft)}
+.fm-lcd{flex:1;min-width:0;background:#CFE3C9;border:2.5px solid var(--ink);border-radius:10px;padding:5px 12px 4px;color:#203A1C}
+.fm-lcd small{display:block;font-size:12px;line-height:1.3;color:#36502F}
+.fm-lcd b{display:block;font-family:var(--display);font-weight:400;font-size:17px;line-height:1.35;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.fm-dial{flex:none;width:44px;height:44px;border-radius:50%;border:2.5px solid var(--ink);background:conic-gradient(from 0deg, var(--paper) 0 24deg, #E7DCC8 24deg 360deg);box-shadow:0 3px 0 var(--ink)}
+.fm-screen{background:var(--ink);border:3px solid var(--ink);border-radius:18px;padding:10px;box-shadow:inset 0 0 0 3px var(--ink-3)}
+.fm-screen iframe{display:block;width:100%;height:380px;border:0;border-radius:12px;background:#1B1529}
+.fm-bot{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-top:12px;font-family:var(--display);font-size:14px;color:var(--ink)}
+.fm-bot .keys{display:flex;gap:6px}
+.fm-bot .keys i{width:34px;height:20px;border:2.5px solid var(--ink);border-radius:6px;background:var(--paper);box-shadow:0 3px 0 var(--ink)}
+.fm-bot .keys i:nth-child(2){background:var(--pink)}
+.fm-bot .keys i:nth-child(3){background:var(--lemon)}
+.soon{position:relative;height:380px;border-radius:12px;overflow:hidden;background:var(--cream);background-image:linear-gradient(rgba(156,198,238,.35) 1px, transparent 1px),linear-gradient(90deg, rgba(156,198,238,.35) 1px, transparent 1px);background-size:22px 22px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;padding:22px;text-align:center;color:var(--ink)}
+.soon svg{width:min(250px,72%);height:auto;overflow:visible}
+.soon b{font-family:var(--display);font-weight:400;font-size:clamp(20px,2.4vw,26px);line-height:1.3}
+.soon p{font-size:15px;line-height:1.55;color:var(--ink-2)}
+.soon .stamp{position:absolute;top:16px;right:14px;padding:4px 10px 3px;border:2.5px solid var(--pink-deep);border-radius:8px;color:var(--pink-deep);font-family:var(--display);font-size:14px;transform:rotate(8deg);background:rgba(255,253,246,.8)}
+.soon .wave{animation:wv 1.6s ease-in-out infinite}
+@keyframes wv{0%,100%{opacity:.25}50%{opacity:1}}
+.soon .note{animation:nt 2.4s ease-in-out infinite;transform-box:fill-box}
+.soon .note.n2{animation-delay:1.2s}
+@keyframes nt{0%,100%{transform:translateY(0);opacity:.6}50%{transform:translateY(-6px);opacity:1}}
+@media (max-width:960px){
+  .listen-grid{grid-template-columns:1fr;gap:20px}
+  .fm{max-width:640px;width:100%;margin-left:auto;margin-right:auto}
+}
+@media (max-width:640px){
+  .listen{padding:68px 0 72px}
+  .fm{padding:12px 12px 12px;border-radius:22px 22px 18px 18px;box-shadow:5px 6px 0 rgba(43,35,64,.85), inset -7px -6px 0 var(--blue-mid)}
+  .fm-sp,.fm-dial{width:40px;height:40px}
+  .fm-screen{padding:7px;border-radius:14px}
+  .soon{height:340px;padding:16px}
+  .tp .play-badge{font-size:12px;padding:2px 8px 1px 6px;right:6px}
+  .pl-box{padding:12px 12px 12px;border-radius:20px 20px 16px 16px}
+  .pl-grille,.pl-knobs{display:none}
+  .pl-close .t{display:none}
+  .pl-screen{padding:6px;border-radius:12px}
+  .snack{font-size:15px;top:calc(76px + env(safe-area-inset-top));bottom:auto;transform:translate(-50%,-16px)}
+  .snack.on{transform:translate(-50%,0)}
+  .lhint.memo-hand{flex-direction:column;align-items:flex-start;gap:2px}
+}
+@media (prefers-reduced-motion:reduce){
+  .pl-box{animation:none}
+  .soon .wave,.soon .note{animation:none}
+  .snack{transition:none}
+}
 </style>
 </head>
 <body>
@@ -1128,6 +1357,7 @@ html,body{overflow-x:clip;max-width:100%}
         <li><a href="#route">하굣길</a></li>
         <li><a href="#shelves">진열대</a></li>
         <li><a href="#layer1">수록 콘텐츠</a></li>
+        <li><a href="#listen">노래 듣기</a></li>
         <li><a href="#gacha">뽑기</a></li>
         <li><a href="#ritual">언박싱</a></li>
         <li><a href="#faq">알림장</a></li>
@@ -1437,6 +1667,52 @@ html,body{overflow-x:clip;max-width:100%}
   </div>
 </section>
 
+<!-- 7-2 v5: 그 시절 노래 들어보기 (공식 임베드 전용) -->
+<section class="listen kraft-bg" id="listen" aria-labelledby="listen-title">
+  <div class="wrap listen-grid">
+    <div>
+      <span class="eyebrow rv">카세트 라디오 · 미리 듣기</span>
+      <h2 class="sec-title rv" id="listen-title">그 시절 노래 들어보기</h2>
+      <p class="sec-lead rv">상자가 도착하기 전에, 귀부터 먼저 하굣길로 돌아가 볼까요? 공식 채널에 올라온 그 시절 노래만 골라 라디오에 걸어 뒀어요.</p>
+      <ul class="lhints rv">
+        <li class="lhint"><span class="mini" aria-hidden="true"><svg viewBox="0 0 10 10"><path d="M1.5 1l7.5 4-7.5 4z" fill="#2B2340"/></svg>듣기</span><span>카세트에 ▶ 표시가 있으면 눌러서 바로 들을 수 있어요</span></li>
+        <li class="lhint"><span class="dot" aria-hidden="true">♪</span><span id="listenCount">곡 링크를 하나씩 채워 넣는 중이에요. 곧 더 많이 들려드릴게요.</span></li>
+        <li class="lhint memo-hand"><span class="hand">BGM은 잠깐 쉬어요!</span><span>노래를 틀면 사이트 BGM이 멈췄다가, 닫으면 다시 흘러나와요.</span></li>
+      </ul>
+    </div>
+    <div class="fm rv" role="group" aria-label="플레이리스트 라디오">
+      <span class="fm-handle" aria-hidden="true"></span><span class="fm-ant" aria-hidden="true"></span>
+      <div class="fm-top">
+        <span class="fm-sp" aria-hidden="true"></span>
+        <div class="fm-lcd"><small>FM 2010 · 방과 후 채널</small><b id="fmName">그 시절 플레이리스트</b></div>
+        <span class="fm-dial" aria-hidden="true"></span>
+      </div>
+      <div class="fm-screen" id="fmScreen">
+        <div class="soon" id="fmSoon">
+          <span class="stamp">준비 중</span>
+          <svg viewBox="0 0 240 150" aria-hidden="true" stroke="#2B2340" stroke-width="3" stroke-linejoin="round" stroke-linecap="round">
+            <path d="M84 40l-20-26M156 40l22-28" fill="none"/><circle cx="178" cy="12" r="5" fill="#F4A7C3"/>
+            <rect x="24" y="38" width="192" height="104" rx="18" fill="#F4A7C3"/>
+            <path d="M40 132h160" stroke="#E58FB0" stroke-width="6"/>
+            <circle cx="72" cy="90" r="30" fill="#FBD6E3"/>
+            <g fill="#2B2340" stroke="none"><circle cx="62" cy="80" r="2.4"/><circle cx="72" cy="80" r="2.4"/><circle cx="82" cy="80" r="2.4"/><circle cx="57" cy="90" r="2.4"/><circle cx="67" cy="90" r="2.4"/><circle cx="77" cy="90" r="2.4"/><circle cx="87" cy="90" r="2.4"/><circle cx="62" cy="100" r="2.4"/><circle cx="72" cy="100" r="2.4"/><circle cx="82" cy="100" r="2.4"/></g>
+            <rect x="116" y="56" width="84" height="34" rx="6" fill="#CFE3C9"/>
+            <path d="M126 73h10M142 73h6M154 73h12M172 73h18" stroke="#36502F" stroke-width="3"/>
+            <rect x="116" y="100" width="22" height="26" rx="5" fill="#FFE76A"/><rect x="146" y="100" width="22" height="26" rx="5" fill="#FFFDF6"/><rect x="176" y="100" width="22" height="26" rx="5" fill="#9CC6EE"/>
+            <path d="M44 52h0" stroke="#FFFDF6" stroke-width="5"/><path d="M40 62q2-10 12-12" fill="none" stroke="#FFFDF6" stroke-width="3"/>
+            <path class="wave" d="M8 78q-6 12 0 24M228 78q6 12 0 24" fill="none"/>
+            <g class="note"><path d="M214 30v-18l14-3v18" fill="none"/><circle cx="210" cy="31" r="4.5" fill="#2B2340"/><circle cx="224" cy="28" r="4.5" fill="#2B2340"/></g>
+            <g class="note n2"><path d="M20 22v-16" fill="none"/><circle cx="16" cy="23" r="4.5" fill="#2B2340"/><path d="M20 6q8 2 8 10" fill="none"/></g>
+          </svg>
+          <b>플레이리스트 준비 중이에요</b>
+          <p>문방구 사장님이 그 시절 노래를 한 곡씩 테이프에 녹음하고 있어요.<br>조금만 기다려 주세요 ♪</p>
+        </div>
+      </div>
+      <div class="fm-bot"><span>STEREO · 하굣길 5시</span><span class="keys" aria-hidden="true"><i></i><i></i><i></i></span></div>
+    </div>
+  </div>
+</section>
+
 <!-- 8 GACHA -->
 <section class="gacha" id="gacha" aria-labelledby="gacha-title">
   <div class="wrap gacha-grid">
@@ -1738,6 +2014,7 @@ html,body{overflow-x:clip;max-width:100%}
           <li><a href="#route">하굣길 타임라인</a></li>
           <li><a href="#shelves">진열대</a></li>
           <li><a href="#layer1">수록 콘텐츠</a></li>
+          <li><a href="#listen">그 시절 노래 듣기</a></li>
           <li><a href="#gacha">미션 뽑기</a></li>
           <li><a href="#stickers">스티커 팩 미리보기</a></li>
           <li><a href="#reserve">사전 예약</a></li>
@@ -1754,6 +2031,27 @@ html,body{overflow-x:clip;max-width:100%}
     </div>
   </div>
 </footer>
+
+<!-- v5: 공식 임베드 플레이어 모달 + 안내 토스트 -->
+<div class="pl" id="player" hidden>
+  <div class="pl-back" data-close></div>
+  <span class="sr" tabindex="0" data-trap="start"></span>
+  <div class="pl-box" role="dialog" aria-modal="true" aria-labelledby="plTitle">
+    <span class="pl-handle" aria-hidden="true"></span>
+    <div class="pl-top">
+      <span class="pl-grille" aria-hidden="true"></span>
+      <div class="pl-lcd"><small id="plSub">지금 재생 중인 테이프</small><h2 id="plTitle">노래 제목</h2></div>
+      <button class="pl-close" type="button" id="plClose" aria-label="플레이어 닫기"><svg viewBox="0 0 14 14" aria-hidden="true"><path d="M2 2l10 10M12 2L2 12" stroke="#2B2340" stroke-width="2.8" stroke-linecap="round"/></svg><span class="t">닫기</span></button>
+    </div>
+    <div class="pl-screen"><div class="pl-ratio" id="plRatio"></div></div>
+    <div class="pl-bot">
+      <span class="pl-note"><i aria-hidden="true"></i>공식 채널 영상으로 재생돼요</span>
+      <span class="pl-knobs" aria-hidden="true"><span></span><span></span></span>
+    </div>
+  </div>
+  <span class="sr" tabindex="0" data-trap="end"></span>
+</div>
+<div class="snack" id="snack" role="status" aria-live="polite"><span class="ic" aria-hidden="true">♪</span><span id="snackT"></span></div>
 
 <!-- BGM toast + cassette radio -->
 <div class="toast" id="bgmToast" role="dialog" aria-labelledby="toastT" hidden>
@@ -1829,24 +2127,62 @@ html,body{overflow-x:clip;max-width:100%}
   var chips = Array.prototype.slice.call(sub.querySelectorAll('.chipb'));
 
   function items(){
-    if (state.k === 'ani') return DATA.ani.map(function(t){ return {t:t, tag:'OP·ED', sub:'오프닝·엔딩 메들리'}; });
-    if (state.k === 'idol') return DATA.idol.map(function(t){ return {t:t, tag:'아이돌', sub:'2세대 명곡 플레이리스트'}; });
-    var v = DATA.tvVar.map(function(t){ return {t:t, tag:'버라이어티', sub:'버라이어티 하이라이트'}; });
-    var d = DATA.tvDra.map(function(t){ return {t:t, tag:'드라마', sub:'드라마 명장면 클립'}; });
+    function id(p, i){ return p + '-' + String(i + 1).padStart(2,'0'); }
+    if (state.k === 'ani') return DATA.ani.map(function(t, i){ return {t:t, tag:'OP·ED', sub:'오프닝·엔딩 메들리', id:id('A', i)}; });
+    if (state.k === 'idol') return DATA.idol.map(function(t, i){ return {t:t, tag:'아이돌', sub:'2세대 명곡 플레이리스트', id:id('B', i)}; });
+    var nv = DATA.tvVar.length;
+    var v = DATA.tvVar.map(function(t, i){ return {t:t, tag:'버라이어티', sub:'버라이어티 하이라이트', id:id('C', i)}; });
+    var d = DATA.tvDra.map(function(t, i){ return {t:t, tag:'드라마', sub:'드라마 명장면 클립', id:id('C', nv + i)}; });
     return state.f === 'var' ? v : state.f === 'dra' ? d : v.concat(d);
+  }
+  /* ---------- v5: 링크 해석 (유튜브 / 스포티파이 → 공식 임베드 주소) ---------- */
+  function SONG_LINK(id){
+    try { var v = (typeof SONG_LINKS === 'object' && SONG_LINKS) ? SONG_LINKS[id] : ''; return typeof v === 'string' ? v.trim() : ''; } catch(e) { return ''; }
+  }
+  function toSec(t){
+    if (!t) return 0;
+    t = String(t).trim();
+    if (/^\d+$/.test(t)) return parseInt(t, 10);
+    var m = t.match(/^(?:(\d+)h)?(?:(\d+)m)?(?:(\d+)s?)?$/i);
+    if (!m) return 0;
+    return (parseInt(m[1] || 0, 10) * 3600) + (parseInt(m[2] || 0, 10) * 60) + parseInt(m[3] || 0, 10);
+  }
+  function ytEmbed(raw){
+    if (!raw || typeof raw !== 'string') return '';
+    raw = raw.trim(); if (!raw) return '';
+    if (!/^[a-z]+:\/\//i.test(raw)) raw = 'https://' + raw.replace(/^\/+/, '');
+    var u; try { u = new URL(raw); } catch(e) { return ''; }
+    var host = u.hostname.toLowerCase().replace(/^(www|m|music)\./, ''), id = '', p = u.pathname.split('/').filter(Boolean);
+    if (host === 'youtu.be') id = p[0] || '';
+    else if (host === 'youtube.com' || host === 'youtube-nocookie.com') {
+      if (p[0] === 'watch') id = u.searchParams.get('v') || '';
+      else if (/^(shorts|embed|live|v|e)$/.test(p[0] || '')) id = p[1] || '';
+      else if (!p.length) id = u.searchParams.get('v') || '';
+    }
+    if (!/^[A-Za-z0-9_-]{11}$/.test(id)) return '';
+    var hash = new URLSearchParams((u.hash || '').replace(/^#/, ''));
+    var start = toSec(u.searchParams.get('t') || u.searchParams.get('start') || hash.get('t') || hash.get('start'));
+    return 'https://www.youtube-nocookie.com/embed/' + id + '?autoplay=1&rel=0&playsinline=1' + (start > 0 ? '&start=' + start : '');
+  }
+  function spEmbed(raw){
+    if (!raw || typeof raw !== 'string') return '';
+    var m = raw.trim().match(/^(?:https?:\/\/)?open\.spotify\.com\/(?:intl-[a-z]{2}(?:-[a-z]{2})?\/)?(?:embed\/)?(playlist|album|track)\/([A-Za-z0-9]{10,40})(?:[/?#].*)?$/i);
+    return m ? 'https://open.spotify.com/embed/' + m[1].toLowerCase() + '/' + m[2] : '';
   }
   function norm(s){ return s.replace(/\s+/g,'').toLowerCase(); }
   function render(){
     var all = items(), qq = norm(state.q);
     var hit = qq ? all.filter(function(x){ return norm(x.t).indexOf(qq) > -1; }) : all;
     var showN = (state.open || qq) ? hit.length : Math.min(LIMIT, hit.length);
-    var side = state.k === 'ani' ? 'A' : state.k === 'idol' ? 'B' : 'C';
     var html = '';
     for (var i = 0; i < showN; i++){
-      var n = String(all.indexOf(hit[i]) + 1).padStart(2,'0');
       var ab = (all.indexOf(hit[i]) % 2) ? 'B' : 'A';
-      html += '<li class="tp"><span class="scr a" aria-hidden="true"></span><span class="scr b" aria-hidden="true"></span><span class="scr c" aria-hidden="true"></span><span class="scr d" aria-hidden="true"></span>'
-        + '<div class="lbl"><span class="band"><span>' + side + '-' + n + '</span><span>' + hit[i].tag + '</span></span>'
+      var linked = !!ytEmbed(SONG_LINK(hit[i].id));
+      html += '<li class="tp' + (linked ? ' has-link' : '') + '">'
+        + '<button class="tp-hit" type="button" data-id="' + hit[i].id + '" data-title="' + hit[i].t + '" aria-label="' + hit[i].id + ' ' + hit[i].t + (linked ? ' 듣기 (공식 영상 플레이어 열기)' : ' · 곧 들을 수 있어요') + '"' + (linked ? ' aria-haspopup="dialog"' : '') + '></button>'
+        + (linked ? '<span class="play-badge" aria-hidden="true"><svg viewBox="0 0 10 10"><path d="M1.5 1l7.5 4-7.5 4z" fill="#2B2340"/></svg>듣기</span>' : '')
+        + '<span class="scr a" aria-hidden="true"></span><span class="scr b" aria-hidden="true"></span><span class="scr c" aria-hidden="true"></span><span class="scr d" aria-hidden="true"></span>'
+        + '<div class="lbl"><span class="band"><span>' + hit[i].id + '</span><span>' + hit[i].tag + '</span></span>'
         + '<span class="ttl">' + hit[i].t + '</span><span class="subl">' + hit[i].sub + '</span>'
         + '<span class="win" aria-hidden="true"><i></i><em></em><i></i></span></div>'
         + '<div class="foot" aria-hidden="true"><b>' + ab + '면</b></div></li>';
@@ -2180,6 +2516,109 @@ html,body{overflow-x:clip;max-width:100%}
   document.getElementById('toastOn').addEventListener('click', turnOn);
   document.getElementById('toastOff').addEventListener('click', function(){ toast.hidden = true; store('ts2010_bgm','off'); });
   if (store('ts2010_bgm') !== 'off') { setTimeout(function(){ if (!BGM.playing) toast.hidden = false; }, 1500); }
+
+  /* ---------- v5: 공식 임베드 재생 (설정은 맨 위 SONG_LINKS / SPOTIFY_PLAYLIST) ---------- */
+  (function(){
+    var player = document.getElementById('player'), box = player.querySelector('.pl-box'),
+        ratio = document.getElementById('plRatio'), plTitle = document.getElementById('plTitle'),
+        plSub = document.getElementById('plSub'), plClose = document.getElementById('plClose'),
+        snack = document.getElementById('snack'), snackT = document.getElementById('snackT');
+    var lastFocus = null, bgmWasOn = false, inerted = [], snackTimer = null;
+
+    function showSnack(t){
+      snackT.textContent = t;
+      snack.classList.add('on');
+      clearTimeout(snackTimer);
+      snackTimer = setTimeout(function(){ snack.classList.remove('on'); }, 2600);
+    }
+    function setInert(on){
+      if (on){
+        inerted = Array.prototype.filter.call(document.body.children, function(el){
+          return el !== player && el !== snack && el.tagName !== 'SCRIPT' && !el.hasAttribute('inert');
+        });
+        inerted.forEach(function(el){ el.setAttribute('inert', ''); });
+      } else {
+        inerted.forEach(function(el){ el.removeAttribute('inert'); });
+        inerted = [];
+      }
+    }
+    function pauseBGM(){
+      bgmWasOn = false;
+      try { if (BGM.playing){ bgmWasOn = true; BGM.stop(); ui(false); } } catch(e) {}
+    }
+    function resumeBGM(){
+      if (!bgmWasOn) return;
+      bgmWasOn = false;
+      try { BGM.start(); ui(true); } catch(e) {}
+    }
+    function open(id, title, src){
+      if (!player.hidden) close(true);
+      lastFocus = document.activeElement;
+      pauseBGM();
+      plTitle.textContent = title;
+      plSub.textContent = id + ' · 지금 재생 중인 테이프';
+      var f = document.createElement('iframe');
+      f.setAttribute('title', title + ' 공식 영상 플레이어');
+      f.setAttribute('allow', 'autoplay; encrypted-media; picture-in-picture');
+      f.setAttribute('allowfullscreen', '');
+      f.setAttribute('referrerpolicy', 'strict-origin-when-cross-origin');
+      f.src = src;
+      ratio.innerHTML = '';
+      ratio.appendChild(f);
+      player.hidden = false;
+      document.documentElement.classList.add('pl-lock');
+      setInert(true);
+      plClose.focus();
+    }
+    function close(silent){
+      if (player.hidden) return;
+      var f = ratio.querySelector('iframe');
+      if (f){ f.removeAttribute('src'); f.src = 'about:blank'; f.removeAttribute('src'); ratio.removeChild(f); }
+      player.hidden = true;
+      document.documentElement.classList.remove('pl-lock');
+      setInert(false);
+      if (silent === true) return;
+      resumeBGM();
+      if (lastFocus && document.contains(lastFocus)) { try { lastFocus.focus(); } catch(e) {} }
+    }
+    plClose.addEventListener('click', function(){ close(); });
+    player.querySelector('[data-close]').addEventListener('click', function(){ close(); });
+    player.querySelector('[data-trap="start"]').addEventListener('focus', function(){ var f = ratio.querySelector('iframe'); (f || plClose).focus(); });
+    player.querySelector('[data-trap="end"]').addEventListener('focus', function(){ plClose.focus(); });
+    document.addEventListener('keydown', function(e){
+      if (player.hidden) return;
+      if (e.key === 'Escape'){ e.preventDefault(); close(); }
+    });
+    window.__player = { open: open, close: close, isOpen: function(){ return !player.hidden; } };
+
+    /* cassette taps (overlay buttons rendered by the rack) */
+    document.getElementById('tapes').addEventListener('click', function(e){
+      var b = e.target.closest('.tp-hit'); if (!b) return;
+      var id = b.getAttribute('data-id'), title = b.getAttribute('data-title');
+      var src = ytEmbed(SONG_LINK(id));
+      if (src) open(id, title, src);
+      else showSnack('이 곡은 곧 들려드릴게요 ♪');
+    });
+
+    /* listen section: count + spotify */
+    var n = 0;
+    try { Object.keys(SONG_LINKS).forEach(function(k){ if (ytEmbed(SONG_LINKS[k])) n++; }); } catch(e) {}
+    var lc = document.getElementById('listenCount');
+    if (lc && n > 0) lc.textContent = '지금 ' + n + '개 카세트에 ▶ 표시가 붙어 있어요. 진열대에서 찾아 눌러 보세요.';
+    var sp = spEmbed(typeof SPOTIFY_PLAYLIST === 'string' ? SPOTIFY_PLAYLIST : '');
+    if (sp){
+      var scr = document.getElementById('fmScreen'), soon = document.getElementById('fmSoon');
+      var f = document.createElement('iframe');
+      f.setAttribute('title', '그 시절 플레이리스트 (Spotify 공식 플레이어)');
+      f.setAttribute('allow', 'autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture');
+      f.setAttribute('loading', 'lazy');
+      f.setAttribute('height', '380');
+      f.src = sp;
+      if (soon) scr.removeChild(soon);
+      scr.appendChild(f);
+      document.getElementById('fmName').textContent = '지금 흐르는 플레이리스트 ♪';
+    }
+  })();
 })();
 </script>
 </body>
